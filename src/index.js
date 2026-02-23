@@ -164,3 +164,4 @@ app.post('/perimetro-rectangulo', (req, res) => {
     res.send({ resultado });//se envia el resultado al front
 });
 
+console.log("CAMBIO_DE_PRUEBA");
