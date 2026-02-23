@@ -132,37 +132,23 @@ app.post('/perimetro-cuadrado', (req, res) => {
 
 //////////////////////////////////////////////////////////////////////////////////////////
 
-//end point area rectangulo
-app.post('/area-rectangulo', (req, res) => {
-    const { base, altura } = req.body;//se declaran los datos de entrada
-    
-    //validar que se hayan enviado los dos datos que no esten vacios
-    if(!base || !altura){
-        return res.status(400).send({'error': 'Faltan datos para calcular el area'})
+//end point area circulo
+// endpoint área círculo
+app.post('/area-circulo', (req, res) => {
+    const { radio } = req.body;
+    if(!radio){
+        return res.status(400).send({ error: 'Falta el dato radio' });
     }
-
-    //calcular el area
-    const resultado = base * altura;
-
-    //enviar el resultado al front
-    res.send({ resultado });//se envia el resultado al front
+    const resultado = Math.PI * radio * radio;
+    res.send({ resultado });
 });
 
-//end point perimetro rectangulo
-app.post('/perimetro-rectangulo', (req, res) => {
-    const { base, altura } = req.body;//se declaran los datos de entrada
-    
-    //validar que se hayan enviado los dos datos que no esten vacios
-    if(!base || !altura){
-        return res.status(400).send({'error': 'Faltan datos para calcular el perimetro'})
+// endpoint perímetro círculo
+app.post('/perimetro-circulo', (req, res) => {
+    const { radio } = req.body;
+    if(!radio){
+        return res.status(400).send({ error: 'Falta el dato radio' });
     }
-
-    //calcular el perimetro
-    const resultado = 2 * (base + altura);
-
-    //enviar el resultado al front
-    res.send({ resultado });//se envia el resultado al front
+    const resultado = 2 * Math.PI * radio;
+    res.send({ resultado });
 });
-
-console.log("CAMBIO_DE_PRUEBA");
-console.log("CAMBIO_DE_PRUEBA");
